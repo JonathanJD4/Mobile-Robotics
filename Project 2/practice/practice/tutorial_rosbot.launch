@@ -1,0 +1,9 @@
+<launch>
+<param name="/use_sim_time" value="true"/>
+<!-- Launch rosbot world map -->
+<arg name="use_gazebo" default="true"/>
+<include unless="$(arg use_gazebo)" file="$(find astra_launch)/launch/astra.launch"/>
+<include if="$(arg use_gazebo)" file="$(find rosbot_description)/launch/rosbot.launch"/>
+<!-- Launch stopper node -->
+<node pkg="tutorial_pkg" type="tutorial_pkg_node" name="stopper" output="screen"></node>
+</launch>
